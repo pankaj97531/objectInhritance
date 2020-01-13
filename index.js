@@ -37,3 +37,19 @@ console.log( rabbit.eats ); // true
 //https://javascript.info/constructor-new
 
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
+
+function foo(){}
+foo.prototype = {
+  foo_prop: "foo val"
+};
+
+function bar(){}
+var proto = Object.create(
+  foo.prototype
+);
+proto.bar_prop = "bar val";
+bar.prototype = proto;
+var inst = new bar;
+
+console.log(inst.foo_prop);
+console.log(inst.bar_prop)
